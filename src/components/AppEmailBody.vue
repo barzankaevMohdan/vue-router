@@ -2,7 +2,7 @@
   <div v-if="email">
     <h2>{{email.theme}}</h2>
     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci animi, cumque ea laborum laudantium nostrum odio quis soluta sunt velit?</p>
-    <button class="btn">Закрыть</button>
+    <button class="btn" @click="$router.push('/mail')">Закрыть</button>
   </div>
   <div v-else>
     <h4>Выбериет письмо</h4>
