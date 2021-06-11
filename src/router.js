@@ -10,6 +10,8 @@ export default createRouter({
         { path: '/login', component: Login, alias: '/' },
         { path: '/forget', component: Forget },
         { path: '/dashboard', component: Dashboard },
-        { path: '/mail', component: Mail }
-    ]
+        { path: '/mail/:mailId?', component: Mail }
+    ],
+    linkActiveClass: 'active',
+    linkExactActiveClass: 'active'
 })

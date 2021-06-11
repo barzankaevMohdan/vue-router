@@ -1,7 +1,5 @@
 <template>
-  <the-navbar
-  :visible="isAuth"
-  ></the-navbar>
+  <the-navbar :visible="isAuth"></the-navbar>
   <div class="container with-nav">
     <router-view></router-view>
   </div>
@@ -13,17 +11,26 @@ import TheNavbar from './components/TheNavbar'
 export default {
   data() {
     return {
-      isAuth: false
+      isAuth: true
     }
   },
   methods: {
-    login () {
+    login() {
       this.isAuth = true
-      this.$router.replace('/dashboard')
+      if (this.$route.query.page) {
+        this.$router.replace(this.$route.query.page)
+      } else {
+        this.$router.replace('/dashboard')
+      }
     },
     logout() {
       this.isAuth = false
-      this.$router.replace('/login')
+      this.$router.replace({
+        path: '/login',
+        query: {
+          page: this.$route.path
+        }
+      })
     }
   },
   components: {TheNavbar},
@@ -32,11 +39,11 @@ export default {
       login: this.login,
       logout: this.logout,
       emails: [
-        {id: 1, theme: 'Купил себе PlayStation 5'},
-        {id: 2, theme: 'Выучил Vue Router'},
-        {id: 3, theme: 'Хочу изучить весь Vue'},
-        {id: 4, theme: 'А следующий блок про Vuex!'},
-        {id: 5, theme: 'А что там на счет Vue Hooks?'}
+        {id: '1', theme: 'Купил себе PlayStation 5'},
+        {id: '2', theme: 'Выучил Vue Router'},
+        {id: '3', theme: 'Хочу изучить весь Vue'},
+        {id: '4', theme: 'А следующий блок про Vuex!'},
+        {id: '5', theme: 'А что там на счет Vue Hooks?'}
       ]
     }
   }
@@ -44,4 +51,5 @@ export default {
 </script>
 
 <style>
+
 </style>
