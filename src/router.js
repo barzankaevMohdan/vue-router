@@ -2,9 +2,11 @@ import { createRouter, createWebHistory } from 'vue-router'
 import Login from './views/Login'
 import Forget from './views/Forget'
 import Dashboard from './views/Dashboard'
-import Mail from './views/Mail'
+// import Mail from './views/Mail'
 import AppEmailBody from './components/AppEmailBody'
 import NotFound from './views/NotFound'
+
+const Mail = () => import('./views/Mail')
 
 const router = createRouter({
     history: createWebHistory(),
@@ -27,14 +29,14 @@ const router = createRouter({
     linkExactActiveClass: 'active'
 })
 
-router.beforeEach((to, from, next) => {
-    console.log('beforeEach')
-    if(to.meta.cantEnter) {
-        next({name: 'home'})
-    }else {
-        next()
-    }
-})
+// router.beforeEach((to, from, next) => {
+//     console.log('beforeEach')
+//     if(to.meta.cantEnter) {
+//         next({name: 'home'})
+//     }else {
+//         next()
+//     }
+// })
 
 router.afterEach(() => {
     console.log('afterEach')
